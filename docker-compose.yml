@@ -1,0 +1,29 @@
+services:
+  app:
+    image: syncthing/syncthing:1.20.3
+    restart: always
+    volumes:
+      - config:/var/syncthing/config
+      - ${SYNCTHING_DATA_PATH}:/var/syncthing
+    environment:
+      - PUID
+      - PGID
+      - VIRTUAL_HOST
+      - VIRTUAL_PORT=8384
+      - LETSENCRYPT_HOST
+      - LETSENCRYPT_EMAIL
+    ports:
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    networks:
+      - default
+      - proxy
+
+volumes:
+  config:
+
+networks:
+  proxy:
+    name: nginx-proxy
+    external: true
