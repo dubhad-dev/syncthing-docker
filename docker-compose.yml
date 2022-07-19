@@ -3,9 +3,7 @@ services:
     image: syncthing/syncthing:1.20.3
     restart: always
     volumes:
-      - syncthing:/var/syncthing
-      - config:/var/syncthing/config
-      - ${SYNCTHING_DATA_PATH}:/var/syncthing/Sync
+      - ${SYNCTHING_DATA_PATH}:/var/syncthing
     environment:
       - PUID
       - PGID
@@ -20,10 +18,6 @@ services:
     networks:
       - default
       - proxy
-
-volumes:
-  syncthing:
-  config:
 
 networks:
   proxy:
