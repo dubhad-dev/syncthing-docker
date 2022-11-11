@@ -1,6 +1,6 @@
 services:
   app:
-    image: syncthing/syncthing:1.21.0
+    image: syncthing/syncthing:1.22.1
     restart: always
     volumes:
       - ${SYNCTHING_DATA_PATH}:/var/syncthing
